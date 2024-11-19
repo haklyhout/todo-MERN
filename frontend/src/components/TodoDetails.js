@@ -29,8 +29,6 @@ const TodoDetails = ({ todo }) => {
   return (
     <div className="workout-details">
       <h4>{todo.title}</h4>
-      <p><strong>Load (kg): </strong>{todo.load}</p>
-      <p><strong>Reps: </strong>{todo.reps}</p>
       <p>{formatDistanceToNow(new Date(todo.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>

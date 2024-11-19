@@ -37,12 +37,7 @@ const createTodo = async (req, res) => {
   if(!title) {
     emptyFields.push('title')
   }
-  if(!load) {
-    emptyFields.push('load')
-  }
-  if(!reps) {
-    emptyFields.push('reps')
-  }
+
   if(emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
   }
@@ -50,7 +45,7 @@ const createTodo = async (req, res) => {
   // add doc to db
   try {
     const user_id = req.user._id
-    const todo = await Todo.create({title, load, reps, user_id})
+    const todo = await Todo.create({title, user_id})
     res.status(200).json(todo)
   } catch (error) {
     res.status(400).json({error: error.message})
